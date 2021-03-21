@@ -1,9 +1,14 @@
 <div class="detail-component">
     <div class="detail-component-banner">
-        <img class="detail-component-img" src="https://picsum.photos/id/194/900/500" alt="" />
+        <!-- <img class="detail-component-img" src="https://picsum.photos/id/194/900/500" alt="" /> -->
+        <div class="detail-video-box">
+            <youtube-player videoId="GYAB4Td62zI" width="100%" [startSeconds]="4" [endSeconds]="8">
+            </youtube-player>
+        </div>
+
         <div class="detail-info-box">
             <div class="detail-info-title">
-                WOnder Woman 1984
+                Wonder Woman 1984
             </div>
             <div class="detail-info-desc">
                 A new era of wonder begins.
@@ -120,5 +125,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="app-footer">
+        <p class="footer-text">
+            Powered by TMDB. Developed by Shuai Ma!
+        </p>
+        <div class="footer-cover"></div>
     </div>
 </div>

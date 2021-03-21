@@ -82,6 +82,7 @@
   text-align: center;
   color: white;
   height: 3rem;
+  padding-top: 3rem;
 }
 
 .footer-text {
@@ -102,7 +103,7 @@
   );
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768) {
   .overlay {
     bottom: 0;
     height: 30%;

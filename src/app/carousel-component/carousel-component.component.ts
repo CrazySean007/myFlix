@@ -14,7 +14,7 @@ export class CarouselComponentComponent implements OnInit {
 
   imageGroups: any;
 
-  isSmallScreen = window.innerWidth <= 600;
+  isSmallScreen = window.innerWidth <= 768;
 
   imgList = [];
 
@@ -32,10 +32,10 @@ export class CarouselComponentComponent implements OnInit {
     this.imgs = this.imgs.reverse();
     this.imageGroups.push(this.imgs);
 
-    this.isSmallScreen = window.innerWidth <= 600;
+    this.isSmallScreen = window.innerWidth <= 768;
     window.addEventListener('resize', () => {
       console.log('current width: ', window.innerWidth);
-      this.isSmallScreen = window.innerWidth <= 600;
+      this.isSmallScreen = window.innerWidth <= 768;
       console.log(this.isSmallScreen);
     });
 

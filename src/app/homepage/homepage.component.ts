@@ -19,7 +19,7 @@ export class HomepageComponent implements OnInit {
 
   imgs: string[] = [];
 
-  isSmallScreen = window.innerWidth <= 600;
+  isSmallScreen = window.innerWidth <= 768;
 
   ngOnInit(): void {
     this.images = [1055, 194, 368].map(
@@ -28,11 +28,11 @@ export class HomepageComponent implements OnInit {
 
     this.imgs = this.images;
 
-    this.isSmallScreen = window.innerWidth <= 600;
+    this.isSmallScreen = window.innerWidth <= 768;
     window.addEventListener('resize', () => {
-      console.log('current width: ', window.innerWidth);
-      this.isSmallScreen = window.innerWidth <= 600;
-      console.log(this.isSmallScreen);
+      // console.log('current width: ', window.innerWidth);
+      this.isSmallScreen = window.innerWidth <= 768;
+      // console.log(this.isSmallScreen);
     });
   }
 }
