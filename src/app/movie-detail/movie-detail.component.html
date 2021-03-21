@@ -18,13 +18,13 @@
                 Language: English
             </div>
             <button *ngIf="false" class="detail-info-button">Remove from Watchlist</button>
+            <button *ngIf="true" class="detail-info-button">Add to Watchlist</button>
             <div class="detail-info-added" *ngIf="true">
                 <span>Added to watchlist.</span>
                 <span>
                     <fa-icon [icon]="faTimes"></fa-icon>
                 </span>
             </div>
-            <button *ngIf="true" class="detail-info-button">Add to Watchlist</button>
         </div>
     </div>
     <div class="detail-desc">
@@ -52,9 +52,35 @@
             Full Cast and Crew
         </div>
         <div class="cast-cards">
-            <div class="cast-card" *ngFor="let cast of castImages">
+            <div class="cast-card" *ngFor="let cast of casts">
                 <div class="cast-card-up">
-                    <img [src]="image" alt="" />
+                    <img [src]="cast.image" alt="" (click)="open(content)" />
+                    <ng-template #content let-modal class="cast-modal">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">{{cast.username}}</h4>
+                            <button type="button" class="close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body modal-content">
+                            <div class="modal-content-left">
+                                <img [src]="cast.image" alt="" />
+                            </div>
+                            <div class="modal-content-right">
+                                <p *ngIf="cast.birthday">Birth: {{cast.birthday}}</p>
+                                <p>Birth Place: {{cast.birthplace}}</p>
+                                <p>Gender: {{cast.gender}}</p>
+                                <p>Known for: {{cast.known}}</p>
+                                <p>Also Known as: {{cast.other}}</p>
+                                <p>id: {{cast.id}}</p>
+                            </div>
+                        </div>
+                        <div class="modal-biography" *ngIf="cast.biography">
+                            <h4>Biography</h4>
+                            {{cast.biography}}
+                        </div>
+                    </ng-template>
                 </div>
                 <div class="cast-card-bottom">
                     Gal Gadit AS Diana Prince / Wonder Woman
@@ -74,6 +100,7 @@
                 <div class="review-avatar">
                     {{review.img}}
                 </div>
+
                 <div class="review-content">
                     <div class="review-content-title">
                         <span>A review created by {{review.username}}.</span>
@@ -85,7 +112,10 @@
                         Written by {{review.username}} on {{review.date}}
                     </div>
                     <div class="review-content-text">
-                        {{review.review}}{{review.review}}{{review.review}}
+                        {{review.review}}
+                    </div>
+                    <div class="review-read-rest">
+                        <a href="#">Read the rest</a>
                     </div>
                 </div>
             </div>

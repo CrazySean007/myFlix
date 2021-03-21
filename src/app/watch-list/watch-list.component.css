@@ -15,3 +15,23 @@
 .no-item-found {
   margin-top: 5rem;
 }
+
+.watch-list {
+  width: 100%;
+  text-align: left;
+}
+
+.watch-list-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.watch-list-item {
+  width: 15%;
+  margin: 1rem 1rem;
+}
+
+.watch-list-item > img {
+  width: 100%;
+}

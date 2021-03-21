@@ -17,7 +17,3 @@
   border-bottom: 3px solid white;
   border-radius: 0;
 }
-
-.search-autocomplete {
-  z-index: 99;
-}

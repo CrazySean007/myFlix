@@ -158,6 +158,10 @@
   width: 30%;
 }
 
+.review-content {
+  width: 70%;
+}
+
 .review-content-title {
   font-size: 1.5rem;
   font-weight: 550;
@@ -181,7 +185,44 @@
 }
 
 .review-content-text {
-  line-height: 1rem;
-  max-height: 3.1rem;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.review-read-rest > a {
+  text-decoration: underline;
+  line-height: 300%;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  min-height: 5rem;
+  padding: 1rem;
+}
+
+.modal-content-left {
+  width: 20%;
+  height: 100%;
+}
+
+.modal-content-left > img {
+  width: 100%;
+}
+
+.modal-content-right {
+  width: 80%;
+  height: 100%;
+  padding-left: 2rem;
+}
+
+.modal-content-right > p {
+  margin: 0;
+}
+
+.modal-biography {
+  padding: 1rem;
 }

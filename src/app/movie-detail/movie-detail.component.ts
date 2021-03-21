@@ -4,6 +4,7 @@ import {
   faTwitter,
   faFacebookSquare,
 } from '@fortawesome/free-brands-svg-icons';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-movie-detail',
@@ -19,13 +20,17 @@ export class MovieDetailComponent implements OnInit {
 
   faTwitter = faTwitter;
 
+  castDetail: any;
+
   image: string = 'https://picsum.photos/id/188/900/500';
 
   castImages: string[];
 
-  images: string[] = [];
+  images = [];
 
-  imgs: string[] = [];
+  casts = [];
+
+  imgs = [];
 
   reviewNum: number = 10;
 
@@ -36,7 +41,7 @@ export class MovieDetailComponent implements OnInit {
       date: 'December 18, 2020, 6:08:08 AM',
       rate: 8,
       review:
-        "It isn't as easy as saying 'Wonder Woman 1984' is a good or bad movie. The pieces are there, and there are moments I adoew, but is does come across as a bit of a mess, akhgakjdfkajsdhkjdhasjkhdkj adsjgaalsgfv,ajdgsdladsasd.afjgslfhalisfhkdfjgsgkdfa",
+        "It isn't as easy as saying 'Wonder Woman 1984' is a good or bad movie. The pieces are there, and there are moments I adoew, but is does come across as a bit of a mess, akhgakjdfkajsdhkjdhasjkhdkj adsjgaalsgfv,ajdgsdladsasd.afjgslfhalisfhkdfjgsgkdfaIt isn't as easy as saying 'Wonder Woman 1984' is a good or bad movie. The pieces are there, and there are moments I adoew, but is does come across as a bit of a mess, akhgakjdfkajsdhkjdhasjkhdkj adsjgaalsgfv,ajdgsdladsasd.afjgslfhalisfhkdfjgsgkdfaIt isn't as easy as saying 'Wonder Woman 1984' is a good or bad movie. The pieces are there, and there are moments I adoew, but is does come across as a bit of a mess, akhgakjdfkajsdhkjdhasjkhdkj adsjgaalsgfv,ajdgsdladsasd.afjgslfhalisfhkdfjgsgkdfaIt isn't as easy as saying 'Wonder Woman 1984' is a good or bad movie. The pieces are there, and there are moments I adoew, but is does come across as a bit of a mess, akhgakjdfkajsdhkjdhasjkhdkj adsjgaalsgfv,ajdgsdladsasd.afjgslfhalisfhkdfjgsgkdfaIt isn't as easy as saying 'Wonder Woman 1984' is a good or bad movie. The pieces are there, and there are moments I adoew, but is does come across as a bit of a mess, akhgakjdfkajsdhkjdhasjkhdkj adsjgaalsgfv,ajdgsdladsasd.afjgslfhalisfhkdfjgsgkdfaIt isn't as easy as saying 'Wonder Woman 1984' is a good or bad movie. The pieces are there, and there are moments I adoew, but is does come across as a bit of a mess, akhgakjdfkajsdhkjdhasjkhdkj adsjgaalsgfv,ajdgsdladsasd.afjgslfhalisfhkdfjgsgkdfaIt isn't as easy as saying 'Wonder Woman 1984' is a good or bad movie. The pieces are there, and there are moments I adoew, but is does come across as a bit of a mess, akhgakjdfkajsdhkjdhasjkhdkj adsjgaalsgfv,ajdgsdladsasd.afjgslfhalisfhkdfjgsgkdfa",
     },
     {
       img: '456',
@@ -56,7 +61,15 @@ export class MovieDetailComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
+
+  open(content) {
+    this.modalService.open(content, {
+      size: 'lg',
+      windowClass: 'modal-custom-class',
+      centered: true,
+    });
+  }
 
   ngOnInit(): void {
     this.castImages = Array(10).fill(this.image);
@@ -65,5 +78,27 @@ export class MovieDetailComponent implements OnInit {
     );
 
     this.imgs = this.images;
+
+    this.castDetail = {
+      username: '234',
+      image: 'https://picsum.photos/id/666/900/500',
+      birthday: '1990-08-28',
+      birthplace: 'Los Angeles, California, California, USA',
+      gender: 'male',
+      known: 'Acting',
+      other:
+        '789,  create mode 100644 src/app/homepage/homepage.component.cssafk askdhasd kashdkgkfa aksdhakjsdhkja kgkag kash   kasghd aksh kq',
+      id: 'tweet',
+      biography:
+        "unctions to specifically add or remove the class Angular Reading your question, it seems like you're working with Angular therefore you can use the built-in class directive to toggle the class in the template itself. <!-- toggleEllipses is a boolean indicating ellipsis status -->",
+    };
+    this.casts.push(this.castDetail);
+    this.casts.push(this.castDetail);
+    this.casts.push(this.castDetail);
+    this.casts.push(this.castDetail);
+    this.casts.push(this.castDetail);
+    this.casts.push(this.castDetail);
+    this.casts.push(this.castDetail);
+    this.casts.push(this.castDetail);
   }
 }

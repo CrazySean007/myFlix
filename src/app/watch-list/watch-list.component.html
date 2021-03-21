@@ -3,13 +3,14 @@
         No items found in Watchlist.
     </div>
 
-    <div class="watch-list">
+    <div class="watch-list" *ngIf="!noItem">
         <div class="watch-list-title">
             My WatchList
         </div>
         <div class="watch-list-box">
-            
+            <div class="watch-list-item" *ngFor="let item of watchlist">
+                <img [src]="item" alt="" />
+            </div>
         </div>
     </div>
-
 </div>
