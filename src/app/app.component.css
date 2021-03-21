@@ -1,0 +1,23 @@
+.app-navbar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+.navbar-search-input {
+  background-color: #353a40;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.navbar-search-input:focus {
+  border-bottom: 3px solid white;
+  border-radius: 0;
+}
+
+.search-autocomplete {
+  z-index: 99;
+}

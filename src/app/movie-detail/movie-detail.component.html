@@ -1,0 +1,94 @@
+<div class="detail-component">
+    <div class="detail-component-banner">
+        <img class="detail-component-img" src="https://picsum.photos/id/194/900/500" alt="" />
+        <div class="detail-info-box">
+            <div class="detail-info-title">
+                WOnder Woman 1984
+            </div>
+            <div class="detail-info-desc">
+                A new era of wonder begins.
+            </div>
+            <div class="detail-info-basic">
+                2020 | <fa-icon [icon]="faStar"></fa-icon> 6.9 | 2hrs 32mins
+            </div>
+            <div class="detail-info-genre">
+                Genres: Fatansy, Action, Adventure
+            </div>
+            <div class="detail-info-lang">
+                Language: English
+            </div>
+            <button *ngIf="false" class="detail-info-button">Remove from Watchlist</button>
+            <div class="detail-info-added" *ngIf="true">
+                <span>Added to watchlist.</span>
+                <span>
+                    <fa-icon [icon]="faTimes"></fa-icon>
+                </span>
+            </div>
+            <button *ngIf="true" class="detail-info-button">Add to Watchlist</button>
+        </div>
+    </div>
+    <div class="detail-desc">
+        <div class="detail-desc-title">
+            Description
+        </div>
+        <div class="detail-desc-content">
+            Wonder Woman comes into conglict with the Soviet Union during the Cold War in the 1980s and finds a
+            formidable foe by the name of the Cheetah
+        </div>
+    </div>
+
+    <div class="detail-desc">
+        <div class="detail-desc-title">
+            Share
+        </div>
+        <div class="detail-desc-content share-content">
+            <fa-icon [icon]="faTwitter"></fa-icon>
+            <fa-icon [icon]="faFacebook"></fa-icon>
+        </div>
+    </div>
+
+    <div class="detail-cast" *ngIf="castImages.length >= 1">
+        <div class="cast-title">
+            Full Cast and Crew
+        </div>
+        <div class="cast-cards">
+            <div class="cast-card" *ngFor="let cast of castImages">
+                <div class="cast-card-up">
+                    <img [src]="image" alt="" />
+                </div>
+                <div class="cast-card-bottom">
+                    Gal Gadit AS Diana Prince / Wonder Woman
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-carousel-component title="Recommended Movies" [imgs]="imgs"></app-carousel-component>
+    <app-carousel-component title="Similar Movies" [imgs]="imgs"></app-carousel-component>
+
+    <div class="detail-desc">
+        <div class="detail-desc-title">
+            Reviews <span style="color: rgb(107, 117, 125);">{{reviewNum}}</span>
+        </div>
+        <div class="review-list">
+            <div class="review-card" *ngFor="let review of reviews">
+                <div class="review-avatar">
+                    {{review.img}}
+                </div>
+                <div class="review-content">
+                    <div class="review-content-title">
+                        <span>A review created by {{review.username}}.</span>
+                        <span class="review-rate-badge">
+                            <fa-icon [icon]="faStar"></fa-icon> &nbsp;{{review.rate}}
+                        </span>
+                    </div>
+                    <div class="review-content-desc d-inline-block  text-truncate">
+                        Written by {{review.username}} on {{review.date}}
+                    </div>
+                    <div class="review-content-text">
+                        {{review.review}}{{review.review}}{{review.review}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

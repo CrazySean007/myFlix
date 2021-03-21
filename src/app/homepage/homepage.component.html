@@ -1,0 +1,47 @@
+<div class="homepage">
+    <ngb-carousel *ngIf="images" class="homepage-hot">
+        <ng-template ngbSlide class="homepage-hotcard">
+            <div class="picsum-img-wrapper">
+                <img [src]="images[0]" alt="Random first slide">
+            </div>
+            <div class="overlay">
+                <div class="caption-info">
+                    <span>First slide label</span>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide class="homepage-hotcard">
+            <div class="picsum-img-wrapper">
+                <img [src]="images[1]" alt="Random second slide">
+            </div>
+            <div class="overlay">
+                <div class="caption-info">
+                    <span>Second slide label</span>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide class="homepage-hotcard">
+            <div class="picsum-img-wrapper">
+                <img [src]="images[2]" alt="Random third slide">
+            </div>
+            <div class="overlay">
+                <div class="caption-info">
+                    <span>Third slide label</span>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+    <app-carousel-component title="Continue Watching" [imgs]="imgs"></app-carousel-component>
+    <app-carousel-component title="Popular Movies" [imgs]="imgs"></app-carousel-component>
+    <app-carousel-component title="Top Rated Movies" [imgs]="imgs"></app-carousel-component>
+    <app-carousel-component title="Trending Movies" [imgs]="imgs"></app-carousel-component>
+    <app-carousel-component title="Popular TV Shows" [imgs]="imgs"></app-carousel-component>
+    <app-carousel-component title="Top Rated TV Shows" [imgs]="imgs"></app-carousel-component>
+    <app-carousel-component title="Trending TV Shows" [imgs]="imgs"></app-carousel-component>
+    <div class="app-footer">
+        <p class="footer-text">
+            Powered by TMDB. Developed by Shuai Ma!
+        </p>
+        <div class="footer-cover"></div>
+    </div>
+</div>

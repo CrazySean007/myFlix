@@ -1,0 +1,17 @@
+.watch-list-component {
+  background-color: rgb(5, 10, 48);
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  position: absolute;
+  text-align: center;
+  padding: 3rem 8rem;
+  text-align: center;
+  color: white;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.no-item-found {
+  margin-top: 5rem;
+}
