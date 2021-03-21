@@ -65,7 +65,7 @@ export class MovieDetailComponent implements OnInit {
 
   open(content) {
     this.modalService.open(content, {
-      size: 'lg',
+      size: 'xl',
       windowClass: 'modal-custom-class',
       centered: true,
     });

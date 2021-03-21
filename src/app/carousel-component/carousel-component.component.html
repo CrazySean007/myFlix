@@ -1,9 +1,16 @@
 <div class="carousel-card-list" *ngIf="imageGroups.length > 0">
-    <div class = "carousel-card-title">{{title}}</div>
+    <div class="carousel-card-title">{{title}}</div>
     <ngb-carousel class="homepage-hot">
         <ng-template ngbSlide *ngFor="let imgs of imageGroups">
             <div class="picsum-img-wrapper cover-box">
-                <img *ngFor="let img of imgs" [src]="img" alt="" />
+                <div class="carousel-img-box" *ngFor="let img of imgs">
+                    <img [src]="img" alt="" />
+                    <div class="overlay">
+                        <div class="carousel-name">
+                            <span>First slide label</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </ng-template>
     </ngb-carousel>

@@ -5,14 +5,14 @@
   margin: 3rem 0;
 }
 
-.homepage-hot:focus {
-  outline: none;
-}
-
 .carousel-card-title {
   padding-left: 8%;
   margin-top: 20px;
   text-align: left;
+}
+
+.homepage-hot:focus {
+  outline: none;
 }
 
 .cover-box {
@@ -24,12 +24,57 @@
   padding: 2% 10% 5% 10%;
 }
 
-.cover-box > img {
+.carousel-img-box {
   width: 30%;
   height: 88%;
-  object-fit: scale-down;
+  background-color: #fff;
+  min-height: 5rem;
+  min-width: 5rem;
+  position: relative;
+  text-align: center;
 }
 
-.cover-box > img:hover {
+.carousel-img-box .overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.carousel-name {
+  font-size: 1rem;
+  display: inline-block;
+  width: 100%;
+}
+
+.carousel-img-box:hover .overlay {
+  height: 40%;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  color: white;
+}
+
+.carousel-img-box > img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.wrap-img-box > img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.carousel-img-box:hover {
   transform: scale(1.1);
 }
