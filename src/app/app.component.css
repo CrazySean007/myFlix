@@ -3,7 +3,7 @@
   width: 100%;
   top: 0;
   z-index: 999;
-  height: 6vh;
+  /* height: 6vh; */
 }
 
 .bodypart {
@@ -22,4 +22,7 @@
 .navbar-search-input:focus {
   border-bottom: 3px solid white;
   border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
 }

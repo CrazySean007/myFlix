@@ -1,6 +1,6 @@
 <div class="carousel-card-list" *ngIf="imageGroups.length > 0">
     <div class="carousel-card-title">{{title}}</div>
-    <ngb-carousel class="homepage-hot">
+    <ngb-carousel *ngIf="!isSmallScreen" class="homepage-hot" [showNavigationIndicators]="true">
         <ng-template ngbSlide *ngFor="let imgs of imageGroups">
             <div class="picsum-img-wrapper cover-box">
                 <div class="carousel-img-box" *ngFor="let img of imgs">
@@ -10,6 +10,20 @@
                             <span>First slide label</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+
+    <ngb-carousel *ngIf="isSmallScreen" class="mobile-homepage-hot" [showNavigationIndicators]="false">
+        <ng-template ngbSlide *ngFor="let img of imgList">
+            <div class="picsum-img-wrapper carousel-item-box">
+                <div class="mobile-img-box">
+                    <img [src]="img" alt="" />
+                </div>
+
+                <div class="mobile-overlay">
+                    label
                 </div>
             </div>
         </ng-template>

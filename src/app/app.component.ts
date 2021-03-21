@@ -13,10 +13,13 @@ export class AppComponent {
 
   public model: any;
 
+  isSmallScreen = window.innerWidth <= 600;
+
   search = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(200),
       distinctUntilChanged(),
       map((term) => (term.length < 2 ? [] : ['1', '2', '3']))
     );
+  ngOnInit() {}
 }

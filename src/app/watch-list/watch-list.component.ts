@@ -20,5 +20,6 @@ export class WatchListComponent implements OnInit {
     this.watchlist.push('https://picsum.photos/id/43/900/500');
     this.watchlist.push('https://picsum.photos/id/4/900/500');
     this.watchlist.push('https://picsum.photos/id/46/900/500');
+
   }
 }

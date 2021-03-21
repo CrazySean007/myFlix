@@ -1,5 +1,5 @@
 <div class="homepage">
-    <ngb-carousel *ngIf="images" class="homepage-hot">
+    <ngb-carousel *ngIf="images" class="homepage-hot" [showNavigationIndicators]="!isSmallScreen">
         <ng-template ngbSlide class="homepage-hotcard">
             <div class="picsum-img-wrapper">
                 <img [src]="images[0]" alt="Random first slide">

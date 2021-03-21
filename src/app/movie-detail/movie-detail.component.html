@@ -55,8 +55,8 @@
             <div class="cast-card" *ngFor="let cast of casts">
                 <div class="cast-card-up">
                     <img [src]="cast.image" alt="" (click)="open(content)" />
-                    <ng-template #content let-modal class="cast-modal">
-                        <div class="modal-header">
+                    <ng-template #content let-modal>
+                        <div class="modal-header ">
                             <h4 class="modal-title" id="modal-basic-title">{{cast.username}}</h4>
                             <button type="button" class="close" aria-label="Close"
                                 (click)="modal.dismiss('Cross click')">
@@ -98,17 +98,17 @@
         <div class="review-list">
             <div class="review-card" *ngFor="let review of reviews">
                 <div class="review-avatar">
-                    {{review.img}}
+                    <div class="avatar-img">{{review.img}}</div>
                 </div>
 
                 <div class="review-content">
                     <div class="review-content-title">
-                        <span>A review created by {{review.username}}.</span>
+                        <span class="review-author">A review created by {{review.username}}.</span>
                         <span class="review-rate-badge">
                             <fa-icon [icon]="faStar"></fa-icon> &nbsp;{{review.rate}}
                         </span>
                     </div>
-                    <div class="review-content-desc d-inline-block  text-truncate">
+                    <div class="review-content-desc">
                         Written by {{review.username}} on {{review.date}}
                     </div>
                     <div class="review-content-text">

@@ -14,11 +14,14 @@ export class CarouselComponentComponent implements OnInit {
 
   imageGroups: any;
 
+  isSmallScreen = window.innerWidth <= 600;
+
+  imgList = [];
+
   constructor(config: NgbCarouselConfig) {
     config.showNavigationArrows = true;
     config.interval = 500000;
     config.pauseOnHover = true;
-    config.showNavigationIndicators = true;
   }
 
   ngOnInit(): void {
@@ -28,5 +31,18 @@ export class CarouselComponentComponent implements OnInit {
     this.imageGroups.push(this.imgs);
     this.imgs = this.imgs.reverse();
     this.imageGroups.push(this.imgs);
+
+    this.isSmallScreen = window.innerWidth <= 600;
+    window.addEventListener('resize', () => {
+      console.log('current width: ', window.innerWidth);
+      this.isSmallScreen = window.innerWidth <= 600;
+      console.log(this.isSmallScreen);
+    });
+
+    this.imgList.push(...this.imgs);
+    this.imgList.push(...this.imgs);
+    this.imgList.push(...this.imgs);
+
+    console.log(this.imgList);
   }
 }
