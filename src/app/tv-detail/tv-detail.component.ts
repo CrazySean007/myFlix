@@ -10,11 +10,11 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HomepageService } from '../homepage.service';
 
 @Component({
-  selector: 'app-movie-detail',
-  templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css'],
+  selector: 'app-tv-detail',
+  templateUrl: './tv-detail.component.html',
+  styleUrls: ['./tv-detail.component.css'],
 })
-export class MovieDetailComponent implements OnInit {
+export class TvDetailComponent implements OnInit {
   faStar = faStar;
 
   faTimes = faTimes;
@@ -27,35 +27,24 @@ export class MovieDetailComponent implements OnInit {
 
   faTwitter = faTwitter;
 
-  movie_id: number;
+  tv_id: number;
 
   video_id: string = 'tzkWB85ULJY';
 
   reviewNum: number;
 
-  movie_detail;
+  tv_detail;
 
-  movie_video: any;
-  movie_cast: any;
+  tv_video: any;
+  tv_cast: any;
   cast_info: any;
   cast_links: any;
-  movie_recommend: any;
-  recommend_movie: any;
-  similar_movie: any;
+  tv_recommend: any;
+  recommend_tv: any;
+  similar_tv: any;
   isSmallScreen: boolean;
   resizeTimeout: any;
-  movie_reviews: any;
-
-  localItems = [
-    {
-      id: 464052,
-      name: '123',
-    },
-    {
-      id: 123,
-      name: '345',
-    },
-  ];
+  tv_reviews: any;
   localIncluded: boolean;
   showTag: boolean = false;
   showAdded: boolean;
@@ -109,7 +98,7 @@ export class MovieDetailComponent implements OnInit {
 
   addLocalItem() {
     const localItems = JSON.parse(localStorage.getItem('items')) || [];
-    localItems.push(this.movie_detail);
+    localItems.push(this.tv_detail);
     localStorage.setItem('items', JSON.stringify(localItems));
     this.localIncluded = true;
     this.showTag = true;
@@ -123,9 +112,9 @@ export class MovieDetailComponent implements OnInit {
     const localItems = JSON.parse(localStorage.getItem('items')) || [];
     let ind = -1;
     localItems.find((item, index) => {
-      if (item.id === this.movie_detail.id && item.media_type === 'movie')
+      if (item.id === this.tv_detail.id && item.media_type === 'tv')
         ind = index;
-      return item.id === this.movie_detail.id && item.media_type === 'movie';
+      return item.id === this.tv_detail.id && item.media_type === 'tv';
     });
     if (ind !== -1) {
       localItems.splice(ind, 1);
@@ -154,42 +143,40 @@ export class MovieDetailComponent implements OnInit {
         300
       );
     });
-
     const link = window.location.href;
-    this.movie_id = parseInt(link.substring(link.lastIndexOf('/') + 1));
+    this.tv_id = parseInt(link.substring(link.lastIndexOf('/') + 1));
     let localItems = JSON.parse(localStorage.getItem('items')) || [];
-    this.localIncluded = localItems
-      .map((item) => item.id)
-      .includes(this.movie_id);
-    this.movie_detail = await this.homepageService.searchDetailMovie(
-      this.movie_id
-    );
-    this.movie_detail = [this.movie_detail].map((item) => {
+    this.localIncluded = localItems.map((item) => item.id).includes(this.tv_id);
+    this.tv_detail = await this.homepageService.searchDetailTV(this.tv_id);
+    this.tv_detail = [this.tv_detail].map((item) => {
       return {
-        title: item.title,
+        title: item.name,
         id: item.id,
         genres: item.genres.map((item) => item.name).toString(),
         spoken_languages: item.spoken_languages
           .map((item) => item.name)
           .toString(),
-        release_date: new Date(item.release_date).getFullYear(),
-        runtime: this.getTimeString(item.runtime),
+        release_date: new Date(item.first_air_date).getFullYear(),
+        // runtime: this.getTimeString(item.episode_run_time),
         overview: item.overview,
         vote_average: item.vote_average,
-        tagline: item.tagline,
+        tabline: item.tagline,
         poster_path: 'https://image.tmdb.org/t/p/w500' + item.poster_path,
-        media_type: 'movie',
+        media_type: 'tv',
+        runtime: this.getTimeString(
+          Math.floor(
+            item.episode_run_time.reduce((a, b) => a + b) /
+              item.episode_run_time.length
+          )
+        ),
       };
     })[0];
-    this.movie_video = await this.homepageService.searchVideoMovie(
-      this.movie_id
-    );
+    this.tv_video = await this.homepageService.searchVideoTV(this.tv_id);
+    this.tv_video = this.tv_video.results[0]?.key || 'tzkWB85ULJY';
 
-    this.movie_video = this.movie_video.results[0]?.key || 'tzkWB85ULJY';
+    this.tv_cast = await this.homepageService.searchCastTV(this.tv_id);
 
-    this.movie_cast = await this.homepageService.searchCastMovie(this.movie_id);
-
-    this.movie_cast = this.movie_cast['cast']
+    this.tv_cast = this.tv_cast['cast']
       .filter((item) => item.profile_path)
       .map((item) => {
         return {
@@ -200,40 +187,40 @@ export class MovieDetailComponent implements OnInit {
         };
       });
 
-    await this.getMovieRecommend();
-    await this.getMovieSimilar();
-    await this.getMovieReview();
+    await this.getTVRecommend();
+    await this.getTVSimilar();
+    await this.getTVReview();
   }
 
-  async getMovieRecommend() {
-    const data = await this.homepageService.searchRecommendMovie(this.movie_id);
-    this.recommend_movie = data.results
+  async getTVRecommend() {
+    const data = await this.homepageService.searchRecommendTV(this.tv_id);
+    this.recommend_tv = data.results
       .filter((item) => item.poster_path)
       .map((item) => {
         return {
           id: item.id,
-          title: item.title,
+          title: item.name,
           poster_path: 'https://image.tmdb.org/t/p/w500' + item.poster_path,
         };
       });
   }
 
-  async getMovieSimilar() {
-    const data = await this.homepageService.searchSimilarMovie(this.movie_id);
-    this.similar_movie = data.results
+  async getTVSimilar() {
+    const data = await this.homepageService.searchSimilarTV(this.tv_id);
+    this.similar_tv = data.results
       .filter((item) => item.poster_path)
       .map((item) => {
         return {
           id: item.id,
-          title: item.title,
+          title: item.name,
           poster_path: 'https://image.tmdb.org/t/p/w500' + item.poster_path,
         };
       });
   }
 
-  async getMovieReview() {
-    const data = await this.homepageService.searchReviewMovie(this.movie_id);
-    this.movie_reviews = data.results.map((item) => {
+  async getTVReview() {
+    const data = await this.homepageService.searchReviewTV(this.tv_id);
+    this.tv_reviews = data.results.map((item) => {
       return {
         author: item.author,
         content: item.content,
@@ -244,7 +231,7 @@ export class MovieDetailComponent implements OnInit {
       };
     });
 
-    this.reviewNum = this.movie_reviews.length;
+    this.reviewNum = this.tv_reviews.length;
   }
 
   openPage(link) {

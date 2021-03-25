@@ -8,15 +8,15 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbCarouselConfig],
 })
 export class CarouselComponentComponent implements OnInit {
-  @Input() title?: string;
+  @Input() title?;
 
-  @Input() imgs?: string[];
+  @Input() imgs?;
 
-  imageGroups: any;
+  @Input() isSmallScreen?: boolean;
 
-  isSmallScreen = window.innerWidth <= 768;
+  @Input() media_type?: string;
 
-  imgList = [];
+  imageGroups = [];
 
   constructor(config: NgbCarouselConfig) {
     config.showNavigationArrows = true;
@@ -24,25 +24,30 @@ export class CarouselComponentComponent implements OnInit {
     config.pauseOnHover = true;
   }
 
-  ngOnInit(): void {
+  grouplist(data, group) {
+    let current = [];
     this.imageGroups = [];
-    this.imageGroups.push(this.imgs);
-    this.imgs = this.imgs.reverse();
-    this.imageGroups.push(this.imgs);
-    this.imgs = this.imgs.reverse();
-    this.imageGroups.push(this.imgs);
-
-    this.isSmallScreen = window.innerWidth <= 768;
-    window.addEventListener('resize', () => {
-      console.log('current width: ', window.innerWidth);
-      this.isSmallScreen = window.innerWidth <= 768;
-      console.log(this.isSmallScreen);
+    data.forEach((item) => {
+      current.push(item);
+      if (current.length === group) {
+        this.imageGroups.push(current);
+        current = [];
+      }
     });
+    if (current.length) {
+      this.imageGroups.push(current);
+    }
+  }
 
-    this.imgList.push(...this.imgs);
-    this.imgList.push(...this.imgs);
-    this.imgList.push(...this.imgs);
+  ngOnChanges() {
+    this.grouplist(this.imgs, 6);
+  }
 
-    console.log(this.imgList);
+  ngOnInit(): void {
+    this.grouplist(this.imgs, 6);
+  }
+
+  openPage(link) {
+    window.location.href = link;
   }
 }

@@ -8,10 +8,11 @@
             My WatchList
         </div>
         <div class="watch-list-box">
-            <div class="watch-list-item" *ngFor="let item of watchlist">
-                <img [src]="item" alt="" />
+            <div class="watch-list-item" *ngFor="let item of localItems"
+                (click)="openPage('/watch/'+item.media_type+'/'+item.id)">
+                <img [src]="item.poster_path" alt="item.title || item.name || item.id" />
                 <div class="list-item-title">
-                    123
+                    {{item.title}}
                 </div>
             </div>
         </div>

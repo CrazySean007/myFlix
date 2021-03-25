@@ -6,20 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./watch-list.component.css'],
 })
 export class WatchListComponent implements OnInit {
-  noItem: boolean = false;
+  noItem: boolean;
 
   watchlist: string[] = [];
+
+  localItems;
+
+  openPage(link) {
+    window.location.href = link;
+  }
 
   constructor() {}
 
   ngOnInit(): void {
-    this.watchlist.push('https://picsum.photos/id/666/900/500');
-    this.watchlist.push('https://picsum.photos/id/111/900/500');
-    this.watchlist.push('https://picsum.photos/id/22/900/500');
-    this.watchlist.push('https://picsum.photos/id/31/900/500');
-    this.watchlist.push('https://picsum.photos/id/43/900/500');
-    this.watchlist.push('https://picsum.photos/id/4/900/500');
-    this.watchlist.push('https://picsum.photos/id/46/900/500');
-
+    this.localItems = JSON.parse(localStorage.getItem('items')) || [];
+    this.noItem = this.localItems.length === 0;
   }
 }

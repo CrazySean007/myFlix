@@ -4,10 +4,11 @@
         <ng-template ngbSlide *ngFor="let imgs of imageGroups">
             <div class="picsum-img-wrapper cover-box">
                 <div class="carousel-img-box" *ngFor="let img of imgs">
-                    <img [src]="img" alt="" />
+                    <img [src]="img.poster_path" alt=""
+                        (click)="openPage('/watch/'+(img.media_type || media_type)+'/'+img.id)" />
                     <div class="overlay">
                         <div class="carousel-name">
-                            <span>First slide label</span>
+                            <span>{{img.title}}</span>
                         </div>
                     </div>
                 </div>
@@ -16,14 +17,15 @@
     </ngb-carousel>
 
     <ngb-carousel *ngIf="isSmallScreen" class="mobile-homepage-hot" [showNavigationIndicators]="false">
-        <ng-template ngbSlide *ngFor="let img of imgList">
+        <ng-template ngbSlide *ngFor="let img of imgs">
             <div class="picsum-img-wrapper carousel-item-box">
                 <div class="mobile-img-box">
-                    <img [src]="img" alt="" />
+                    <img [src]="img.poster_path" [alt]="title.id"
+                        (click)="openPage('/watch/'+(media_type || img.media_type)+'/'+img.id)" />
                 </div>
 
                 <div class="mobile-overlay">
-                    label
+                    {{img.title}}
                 </div>
             </div>
         </ng-template>

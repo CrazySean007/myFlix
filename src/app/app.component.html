@@ -7,16 +7,26 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item" [ngClass]="homepage ? 'active' : ''">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/watchlist">My List</a>
+      <li class="nav-item" [ngClass]="mylist ? 'active' : ''">
+        <a class="nav-link" href="/mylist">My List</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
+      <ng-template #rt let-r="result" let-t="term">
+        <div (click)="openPage(r.media_type, r.id)">
+          <img [src]="'https://image.tmdb.org/t/p/w500' + r['backdrop_path']" class="mr-1"
+            style="height: 2.8rem; width: 4rem" />
+          <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+        </div>
+
+      </ng-template>
       <input name="search" id="typeahead-basic" type="text" class="form-control navbar-search-input search-autocomplete"
-        [(ngModel)]="model" [ngbTypeahead]="search" placeholder="Search" />
+        [(ngModel)]="model" [ngbTypeahead]="search" placeholder="Search" [resultTemplate]="rt"
+        [inputFormatter]="format" />
+      <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
     </form>
   </div>
 </nav>

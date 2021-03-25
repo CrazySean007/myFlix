@@ -1,43 +1,34 @@
 <div class="homepage">
     <ngb-carousel *ngIf="images" class="homepage-hot" [showNavigationIndicators]="!isSmallScreen">
-        <ng-template ngbSlide class="homepage-hotcard">
+        <ng-template *ngFor="let trend of cur_movie" ngbSlide class="homepage-hotcard">
             <div class="picsum-img-wrapper">
-                <img [src]="images[0]" alt="Random first slide">
+                <img (click)="openPage('/watch/movie/'+trend.id)" [src]="trend['poster_path']" [alt]="trend.id">
             </div>
             <div class="overlay">
                 <div class="caption-info">
-                    <span>First slide label</span>
-                </div>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide class="homepage-hotcard">
-            <div class="picsum-img-wrapper">
-                <img [src]="images[1]" alt="Random second slide">
-            </div>
-            <div class="overlay">
-                <div class="caption-info">
-                    <span>Second slide label</span>
-                </div>
-            </div>
-        </ng-template>
-        <ng-template ngbSlide class="homepage-hotcard">
-            <div class="picsum-img-wrapper">
-                <img [src]="images[2]" alt="Random third slide">
-            </div>
-            <div class="overlay">
-                <div class="caption-info">
-                    <span>Third slide label</span>
+                    <span>{{trend.title}}</span>
                 </div>
             </div>
         </ng-template>
     </ngb-carousel>
-    <app-carousel-component title="Continue Watching" [imgs]="imgs"></app-carousel-component>
-    <app-carousel-component title="Popular Movies" [imgs]="imgs"></app-carousel-component>
-    <app-carousel-component title="Top Rated Movies" [imgs]="imgs"></app-carousel-component>
-    <app-carousel-component title="Trending Movies" [imgs]="imgs"></app-carousel-component>
-    <app-carousel-component title="Popular TV Shows" [imgs]="imgs"></app-carousel-component>
-    <app-carousel-component title="Top Rated TV Shows" [imgs]="imgs"></app-carousel-component>
-    <app-carousel-component title="Trending TV Shows" [imgs]="imgs"></app-carousel-component>
+    <app-carousel-component title="Continue Watching" [imgs]="localItems" [isSmallScreen]="isSmallScreen">
+    </app-carousel-component>
+    <app-carousel-component title="Popular Movies" [imgs]="pop_movie" [isSmallScreen]="isSmallScreen"
+        media_type="movie">
+    </app-carousel-component>
+    <app-carousel-component title="Top Rated Movies" [imgs]="top_movie" [isSmallScreen]="isSmallScreen"
+        media_type="movie">
+    </app-carousel-component>
+    <app-carousel-component title="Trending Movies" [imgs]="trends_movie" [isSmallScreen]="isSmallScreen"
+        media_type="movie">
+    </app-carousel-component>
+    <app-carousel-component title="Popular TV Shows" [imgs]="pop_tv" [isSmallScreen]="isSmallScreen" media_type="tv">
+    </app-carousel-component>
+    <app-carousel-component title="Top Rated TV Shows" [imgs]="top_tv" [isSmallScreen]="isSmallScreen" media_type="tv">
+    </app-carousel-component>
+    <app-carousel-component title="Trending TV Shows" [imgs]="trends_tv" [isSmallScreen]="isSmallScreen"
+        media_type="tv">
+    </app-carousel-component>
     <div class="app-footer">
         <p class="footer-text">
             Powered by TMDB. Developed by Shuai Ma!

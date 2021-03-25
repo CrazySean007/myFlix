@@ -20,18 +20,19 @@
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 2% 10% 5% 10%;
+  padding: 5% 10% 5% 10%;
 }
 
 .carousel-img-box {
-  width: 30%;
+  width: 15%;
+  margin: 0 0.8%;
   height: 88%;
   background-color: #fff;
   min-height: 5rem;
   min-width: 5rem;
   position: relative;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .carousel-img-box .overlay {
@@ -46,22 +47,26 @@
 }
 
 .carousel-name {
-  font-size: 1rem;
+  font-size: 0.8rem;
   display: inline-block;
   width: 100%;
+  position: relative;
+  top: -1rem;
 }
 
 .carousel-img-box:hover .overlay {
   height: 40%;
-  min-height: 4rem;
   bottom: 0;
   background: linear-gradient(
     to bottom,
     rgba(255, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 75%,
     rgba(0, 0, 0, 1) 100%
   );
   color: white;
-  padding-left: 2rem;
+  padding: 0.5rem;
+  padding-top: 20%;
+  padding-bottom: 0.5rem;
 }
 
 .carousel-img-box > img {
@@ -100,7 +105,7 @@
 }
 
 .mobile-overlay {
-  height: 30%;
+  height: 20%;
   width: 60%;
   position: absolute;
   bottom: 0;
@@ -111,7 +116,7 @@
     rgba(0, 0, 0, 1) 100%
   );
   left: 20%;
-  padding-top: 1rem;
+  padding-top: 2rem;
   text-align: left;
   padding-left: 2rem;
   font-size: 1rem;

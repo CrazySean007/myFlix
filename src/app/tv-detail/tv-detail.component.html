@@ -1,26 +1,26 @@
 <div class="detail-component">
     <div class="detail-component-banner">
         <div class="detail-video-box">
-            <youtube-player [videoId]="movie_video" width="100%">
+            <youtube-player [videoId]="tv_video" width="100%">
             </youtube-player>
         </div>
 
         <div class="detail-info-box">
             <div class="detail-info-title">
-                {{movie_detail.title}}
+                {{tv_detail.title}}
             </div>
             <div class="detail-info-desc">
-                {{movie_detail.tagline}}
+                {{tv_detail.tagline}}
             </div>
             <div class="detail-info-basic">
-                {{movie_detail.release_date}} | <fa-icon [icon]="faStar"></fa-icon> {{movie_detail.vote_average}} |
-                {{movie_detail.runtime}}
+                {{tv_detail.release_date}} | <fa-icon [icon]="faStar"></fa-icon> {{tv_detail.vote_average}} |
+                {{tv_detail.runtime}}
             </div>
             <div class="detail-info-genre">
-                <span style="color: white">Genres:</span> {{movie_detail.genres}}
+                <span style="color: white">Genres:</span> {{tv_detail.genres}}
             </div>
             <div class="detail-info-lang">
-                <span style="color: white">Language:</span> {{movie_detail.spoken_languages}}
+                <span style="color: white">Language:</span> {{tv_detail.spoken_languages}}
             </div>
             <button *ngIf="localIncluded" class="detail-info-button" (click)="removeLocalItem()">Remove from
                 Watchlist</button>
@@ -45,7 +45,7 @@
             Description
         </div>
         <div class="detail-desc-content">
-            {{movie_detail.overview}}
+            {{tv_detail.overview}}
         </div>
     </div>
 
@@ -64,7 +64,7 @@
             Full Cast and Crew
         </div>
         <div class="cast-cards">
-            <div class="cast-card" *ngFor="let cast of movie_cast">
+            <div class="cast-card" *ngFor="let cast of tv_cast">
                 <div class="cast-card-up">
                     <img [src]="cast.profile_path" alt="" (click)="open(content, cast.id)" />
                     <ng-template #content let-modal>
@@ -121,11 +121,11 @@
             </div>
         </div>
     </div>
-    <app-carousel-component title="Recommended Movies" [imgs]="recommend_movie" [isSmallScreen]="isSmallScreen"
-        media_type="movie">
+    <app-carousel-component title="Recommended TV Shows" [imgs]="recommend_tv" [isSmallScreen]="isSmallScreen"
+        media_type="tv">
     </app-carousel-component>
-    <app-carousel-component title="Similar Movies" [imgs]="similar_movie" [isSmallScreen]="isSmallScreen"
-        media_type="movie">
+    <app-carousel-component title="Similar TV Shows" [imgs]="similar_tv" [isSmallScreen]="isSmallScreen"
+        media_type="tv">
     </app-carousel-component>
 
     <div class="detail-desc">
@@ -133,7 +133,7 @@
             Reviews <span style="color: rgb(107, 117, 125);">{{reviewNum}}</span>
         </div>
         <div class="review-list">
-            <div class="review-card" *ngFor="let review of movie_reviews">
+            <div class="review-card" *ngFor="let review of tv_reviews">
                 <div class="review-avatar">
                     <img class="avatar-img" [src]="review.avatar_path" />
                 </div>
