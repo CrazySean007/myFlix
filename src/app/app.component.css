@@ -28,6 +28,11 @@
   outline: none;
 }
 
+.nav-link {
+  text-align: right;
+  margin-right: 1rem;
+}
+
 .dropdown-menu {
   background-color: black;
   color: white;
@@ -44,4 +49,11 @@
 
 ngb-highlight {
   margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+
+  .form-control {
+    width: 70%;
+  }
 }
